@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="DataProcessorCli" type="SpringBootApplicationConfigurationType"
+                   factoryName="Spring Boot" nameIsGenerated="true">
+        <module name="data-processor-cli"/>
+        <option name="PROGRAM_PARAMETERS"
+                value="-f ./data-processor-cli/src/main/resources/samples/multi.csv -u http://localhost:8443 -s -o ./out.json"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="hu.syngu00.dataprocessor.DataProcessorCli"/>
+        <extension name="coverage">
+            <pattern>
+                <option name="PATTERN" value="hu.syngu00.dataprocessor.*"/>
+                <option name="ENABLED" value="true"/>
+            </pattern>
+        </extension>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgresql:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=data_processor
+      - POSTGRES_DB=data_processor
+      - POSTGRES_PASSWORD=data_processor
+    networks:
+      - bifrost
+
+  data-processor-app:
+    image: data-processor-app:latest
+    volumes:
+      - ./application.properties:/app/resources/application.properties
+    ports:
+      - "8443:8080"
+    networks:
+      - bifrost
+    depends_on:
+      - postgresql
+
+  data-processor-gui:
+    image: data-processor-gui:latest
+    volumes:
+      - ./api.conf:/etc/nginx/extra-conf.d/*.conf
+    ports:
+      - "4000:80"
+    networks:
+      - bifrost
+    depends_on:
+      - data-processor-app
+
+networks:
+  bifrost:
+    driver: bridge
+
